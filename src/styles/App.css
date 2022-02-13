@@ -1,0 +1,13 @@
+/** @format */
+.Form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: max-content;
+	margin: auto;
+}
+
+.Form__Section {
+	display: flex;
+	flex-direction: column;
+}
