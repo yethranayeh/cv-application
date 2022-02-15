@@ -6,7 +6,7 @@ const Form = (props) => {
 	return (
 		<div className='Practical'>
 			<form className='Form' onSubmit={props.handleSubmit}>
-				<h1>Practical</h1>
+				<h1>Practical Experience</h1>
 				<div className='Form__Section'>
 					<label htmlFor='company'>Company Name:</label>
 					<input type='text' id='company' name='company' required />
@@ -121,7 +121,12 @@ class Practical extends React.Component {
 				/>
 			);
 		} else {
-			return <button onClick={this.editForm}>Add</button>;
+			return (
+				<div>
+					<h1>Practical Experience</h1>
+					<button onClick={this.editForm}>Add</button>
+				</div>
+			);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 /** @format */
 :root {
 	--gap: 0.5rem;
+	--padding-sm: 0.4rem;
 }
 
 *,
@@ -35,7 +36,6 @@ input {
 	flex-direction: column;
 	gap: var(--gap);
 	width: max-content;
-	margin: auto;
 }
 
 .Form__Section {
@@ -48,4 +48,5 @@ input {
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap);
+	padding: var(--padding-sm);
 }

@@ -113,7 +113,12 @@ class Education extends React.Component {
 				/>
 			);
 		} else {
-			return <button onClick={this.editForm}>Add</button>;
+			return (
+				<div>
+					<h1>Education</h1>
+					<button onClick={this.editForm}>Add</button>
+				</div>
+			);
 		}
 	}
 }
