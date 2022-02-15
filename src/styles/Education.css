@@ -1,6 +1,1 @@
 /** @format */
-
-.Form__Dates {
-	display: flex;
-	gap: var(--gap);
-}

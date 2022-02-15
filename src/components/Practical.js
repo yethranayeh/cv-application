@@ -3,128 +3,226 @@
 import React from "react";
 
 const Form = (props) => {
-	return (
-		<div className='Practical'>
-			<form className='Form' onSubmit={props.handleSubmit}>
-				<h1>Practical Experience</h1>
-				<div className='Form__Section'>
-					<label htmlFor='company'>Company Name:</label>
-					<input type='text' id='company' name='company' required />
-				</div>
-				<div className='Form__Section'>
-					<label htmlFor='position'>Position Title:</label>
-					<input type='text' id='position' name='position' required />
-				</div>
-				<div className='Form__Section'>
-					<label htmlFor='tasks'>Main Tasks:</label>
-					<input type='text' id='tasks' name='tasks' />
-				</div>
-				<div className='Form__Dates'>
+	if (props.formActive) {
+		return (
+			<div className='Practical'>
+				<form className='Form' onSubmit={props.handleSubmit}>
 					<div className='Form__Section'>
-						<label htmlFor='start'>Start Date:</label>
-						<input type='date' id='start' name='start' required />
+						<label htmlFor='company'>Company Name:</label>
+						<input type='text' id='company' name='company' defaultValue={props.formValues.company} required />
 					</div>
 					<div className='Form__Section'>
-						<label htmlFor='end'>End Date:</label>
-						<input type='date' id='end' name='end' required />
+						<label htmlFor='position'>Position Title:</label>
+						<input type='text' id='position' name='position' defaultValue={props.formValues.position} required />
 					</div>
-				</div>
-				<button type='submit'>Save</button>
-				<button type='submit' onClick={props.handleCancel}>
-					Cancel
-				</button>
-			</form>
-		</div>
-	);
+					<div className='Form__Section'>
+						<label htmlFor='tasks'>Main Tasks:</label>
+						<input type='text' id='tasks' name='tasks' defaultValue={props.formValues.tasks} />
+					</div>
+					<div className='Form__Dates'>
+						<div className='Form__Section'>
+							<label htmlFor='start'>Start Date:</label>
+							<input type='date' id='start' name='start' defaultValue={props.formValues.dateStart} required />
+						</div>
+						<div className='Form__Section'>
+							<label htmlFor='end'>End Date:</label>
+							<input type='date' id='end' name='end' defaultValue={props.formValues.dateEnd} required />
+						</div>
+					</div>
+					<button type='submit'>Save</button>
+					<button type='submit' onClick={props.handleCancel}>
+						Cancel
+					</button>
+				</form>
+			</div>
+		);
+	} else {
+		return (
+			<div>
+				<button onClick={props.handleAdd}>Add</button>
+			</div>
+		);
+	}
 };
 
-const Information = (props) => {
-	return (
-		<div className='PracticalInformation'>
-			<p className='PracticalInformation__Company'>{props.company}</p>
-			<p className='PracticalInformation__Position'>{props.position}</p>
-			<p className='PracticalInformation__Tasks'>{props.tasks}</p>
-			<p className='PracticalInformation__Dates'>
-				{props.dateStart} - {props.dateEnd}
-			</p>
-			<button onClick={props.handleEdit}>Edit</button>
-		</div>
-	);
-};
-
-class Practical extends React.Component {
+class Information extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			company: "",
-			position: "",
-			tasks: "",
-			dateStart: "",
-			dateEnd: "",
-			editing: false,
-			information: false
+			formActive: false,
+			formValues: {
+				company: props.company,
+				position: props.position,
+				tasks: props.tasks,
+				dateStart: props.dateStart,
+				dateEnd: props.dateEnd
+			}
 		};
 	}
 
-	editForm = () => {
+	handleEdit = () => {
 		this.setState({
-			editing: true
+			formActive: true
 		});
 	};
 
-	saveForm = (event) => {
+	handleSubmit = (event) => {
 		event.preventDefault();
 		let company = event.target.querySelector('[name="company"]').value;
 		let position = event.target.querySelector('[name="position"]').value;
 		let tasks = event.target.querySelector('[name="tasks"]').value;
 		let dateStart = event.target.querySelector('[name="start"]').value;
 		let dateEnd = event.target.querySelector('[name="end"]').value;
+
 		this.setState({
-			company: company,
-			position: position,
-			tasks: tasks,
-			dateStart: dateStart,
-			dateEnd: dateEnd,
-			editing: false,
-			information: true
+			formActive: false,
+			formValues: {
+				company: company,
+				position: position,
+				tasks: tasks,
+				dateStart: dateStart,
+				dateEnd: dateEnd
+			}
 		});
+		console.info("state after:", this.state);
 	};
 
-	cancelForm = () => {
+	handleCancel = () => {
 		this.setState({
-			editing: false
+			formActive: false
 		});
 	};
 
 	render() {
-		if (this.state.editing) {
+		if (!this.state.formActive) {
 			return (
-				<Form
-					company={this.state.company}
-					position={this.state.position}
-					tasks={this.state.tasks}
-					dateStart={this.state.dateStart}
-					dateEnd={this.state.dateEnd}
-					handleSubmit={this.saveForm}
-					handleCancel={this.cancelForm}
-				/>
-			);
-		} else if (this.state.information) {
-			return (
-				<Information
-					company={this.state.company}
-					position={this.state.position}
-					tasks={this.state.tasks}
-					dateStart={this.state.dateStart}
-					dateEnd={this.state.dateEnd}
-					handleEdit={this.editForm}
-				/>
+				<div className='PracticalInformation'>
+					<p className='PracticalInformation__Company'>{this.state.formValues.company}</p>
+					<p className='PracticalInformation__Position'>{this.state.formValues.position}</p>
+					<p className='PracticalInformation__Tasks'>{this.state.formValues.tasks}</p>
+					<p className='PracticalInformation__Dates'>
+						{this.state.formValues.dateStart} - {this.state.formValues.dateEnd}
+					</p>
+					<button onClick={this.handleEdit}>Edit</button>
+				</div>
 			);
 		} else {
 			return (
-				<div>
+				<Form
+					formActive={this.state.formActive}
+					handleSubmit={this.handleSubmit}
+					handleCancel={this.handleCancel}
+					formValues={this.state.formValues}
+				/>
+			);
+		}
+	}
+}
+
+class Practical extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			entries: [],
+			information: false,
+			formActive: false,
+			formValues: {
+				company: "",
+				position: "",
+				tasks: "",
+				dateStart: "",
+				dateEnd: ""
+			}
+		};
+	}
+
+	addForm = () => {
+		this.setState({ formActive: true });
+	};
+
+	editForm = (entryID) => {
+		const id = Number(entryID);
+		const entry = this.state.entries[id];
+		this.setState({
+			formActive: true,
+			formValues: entry
+		});
+	};
+
+	saveForm = (event) => {
+		event.preventDefault();
+
+		let company = event.target.querySelector('[name="company"]').value;
+		let position = event.target.querySelector('[name="position"]').value;
+		let tasks = event.target.querySelector('[name="tasks"]').value;
+		let dateStart = event.target.querySelector('[name="start"]').value;
+		let dateEnd = event.target.querySelector('[name="end"]').value;
+		this.setState({
+			entries: [
+				...this.state.entries,
+				{
+					id: this.state.entries.length,
+					company: company,
+					position: position,
+					tasks: tasks,
+					dateStart: dateStart,
+					dateEnd: dateEnd,
+					editing: false
+				}
+			],
+			formActive: false,
+			// formValues: {},
+			information: true
+		});
+	};
+
+	updateForm = (event) => {};
+
+	cancelForm = () => {
+		this.setState({
+			formActive: false
+		});
+	};
+
+	render() {
+		if (this.state.information) {
+			const info = this.state.entries.map((entry) => (
+				<Information
+					key={entry.id}
+					id={entry.id}
+					company={entry.company}
+					position={entry.position}
+					tasks={entry.tasks}
+					dateStart={entry.dateStart}
+					dateEnd={entry.dateEnd}
+					handleEdit={this.editForm}
+					handleUpdate={this.updateForm}
+				/>
+			));
+			return (
+				<div className='Practical'>
 					<h1>Practical Experience</h1>
-					<button onClick={this.editForm}>Add</button>
+					{info}
+					<Form
+						formActive={this.state.formActive}
+						formValues={this.state.formValues}
+						handleSubmit={this.saveForm}
+						handleAdd={this.addForm}
+						handleCancel={this.cancelForm}
+					/>
+				</div>
+			);
+		} else {
+			return (
+				<div className='Practical'>
+					<h1>Practical Experience</h1>
+					<Form
+						formActive={this.state.formActive}
+						formValues={this.state.formValues}
+						handleSubmit={this.saveForm}
+						handleAdd={this.addForm}
+						handleCancel={this.cancelForm}
+					/>
 				</div>
 			);
 		}

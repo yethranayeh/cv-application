@@ -43,6 +43,18 @@ input {
 	flex-direction: column;
 }
 
+.Form__Dates {
+	display: flex;
+	gap: var(--gap);
+}
+
+.Education,
+.Practical {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+}
+
 .App__Grid--1fr,
 .App__Grid--3fr {
 	display: flex;
