@@ -9,7 +9,7 @@
 
 .Picture__Img {
 	border-radius: 50%;
-	border: 2px solid var(--secondary-light);
+	outline: 3px solid var(--secondary-light);
 }
 
 .Picture__Container {

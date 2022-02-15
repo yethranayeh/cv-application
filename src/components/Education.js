@@ -89,13 +89,15 @@ class Information extends React.Component {
 	render() {
 		if (!this.state.formActive) {
 			return (
-				<div className='EducationInformation'>
+				<div className='Information EducationInformation'>
 					<p className='EducationInformation__School'>{this.state.formValues.school}</p>
 					{this.state.formValues.study && <p className='EducationInformation__Study'>{this.state.formValues.study}</p>}
 					<p className='EducationInformation__Dates'>
 						{this.state.formValues.dateStart} - {this.state.formValues.dateEnd}
 					</p>
-					<button onClick={this.handleEdit}>Edit</button>
+					<button className='Button--Edit' onClick={this.handleEdit}>
+						Edit
+					</button>
 				</div>
 			);
 		} else {
@@ -188,7 +190,7 @@ class Education extends React.Component {
 			));
 			return (
 				<div className='Education'>
-					<h1>Education</h1>
+					<h2>Education</h2>
 					{info}
 					<Form
 						formActive={this.state.formActive}
@@ -202,7 +204,7 @@ class Education extends React.Component {
 		} else {
 			return (
 				<div className='Education'>
-					<h1>Education</h1>
+					<h2>Education</h2>
 					<Form
 						formActive={this.state.formActive}
 						formValues={this.state.formValues}

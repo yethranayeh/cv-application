@@ -29,7 +29,7 @@ function Form(props) {
 const Information = (props) => {
 	return (
 		<div className='GeneralInformation'>
-			<p className='GeneralInformation__Name'>{props.name}</p>
+			<h1 className='GeneralInformation__Name'>{props.name}</h1>
 			{props.email && (
 				<a className='GeneralInformation__Email' href={`mailto:${props.email}`}>
 					{props.email}

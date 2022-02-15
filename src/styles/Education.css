@@ -1,1 +1,14 @@
 /** @format */
+.EducationInformation__School {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.EducationInformation__Study {
+	font-style: italic;
+}
+
+.EducationInformation__Dates {
+	font-weight: bold;
+	color: var(--secondary);
+}

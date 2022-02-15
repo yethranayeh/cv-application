@@ -1,0 +1,19 @@
+/** @format */
+
+.PracticalInformation__Company {
+	font-size: 1.1rem;
+	font-weight: bold;
+}
+
+.PracticalInformation__Position {
+	font-style: italic;
+}
+
+.PracticalInformation__Tasks {
+	font-size: 0.9rem;
+}
+
+.PracticalInformation__Dates {
+	font-weight: bold;
+	color: var(--secondary);
+}

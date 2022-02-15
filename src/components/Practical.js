@@ -1,6 +1,7 @@
 /** @format */
 
 import React from "react";
+import "../styles/Practical.css";
 
 const Form = (props) => {
 	if (props.formActive) {
@@ -98,14 +99,16 @@ class Information extends React.Component {
 	render() {
 		if (!this.state.formActive) {
 			return (
-				<div className='PracticalInformation'>
+				<div className='Information PracticalInformation'>
 					<p className='PracticalInformation__Company'>{this.state.formValues.company}</p>
 					<p className='PracticalInformation__Position'>{this.state.formValues.position}</p>
-					<p className='PracticalInformation__Tasks'>{this.state.formValues.tasks}</p>
+					{this.state.formValues.tasks && <p className='PracticalInformation__Tasks'>{this.state.formValues.tasks}</p>}
 					<p className='PracticalInformation__Dates'>
 						{this.state.formValues.dateStart} - {this.state.formValues.dateEnd}
 					</p>
-					<button onClick={this.handleEdit}>Edit</button>
+					<button className='Button--Edit' onClick={this.handleEdit}>
+						Edit
+					</button>
 				</div>
 			);
 		} else {
@@ -203,7 +206,7 @@ class Practical extends React.Component {
 			));
 			return (
 				<div className='Practical'>
-					<h1>Practical Experience</h1>
+					<h2>Practical Experience</h2>
 					{info}
 					<Form
 						formActive={this.state.formActive}
@@ -217,7 +220,7 @@ class Practical extends React.Component {
 		} else {
 			return (
 				<div className='Practical'>
-					<h1>Practical Experience</h1>
+					<h2>Practical Experience</h2>
 					<Form
 						formActive={this.state.formActive}
 						formValues={this.state.formValues}
