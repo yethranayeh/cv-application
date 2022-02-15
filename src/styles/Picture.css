@@ -21,15 +21,33 @@
 	display: none;
 }
 
-.Picture__Container:hover .Picture__Overlay {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	top: 0;
-	left: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: rgba(0, 0, 0, 0.5);
-	border-radius: 50%;
+/* Rule for laptop, desktop devices etc. only */
+@media only screen and (hover: hover) {
+	.Picture__Container:hover .Picture__Overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: rgba(0, 0, 0, 0.5);
+		border-radius: 50%;
+	}
+}
+
+/* Rule for mobile devices only */
+@media only screen and (hover: none) and (pointer: coarse) {
+	.Picture__Overlay {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+		border-radius: 50%;
+	}
 }

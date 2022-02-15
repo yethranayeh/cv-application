@@ -29,16 +29,18 @@ const Form = (props) => {
 							<input type='date' id='end' name='end' defaultValue={props.formValues.dateEnd} required />
 						</div>
 					</div>
-					<button type='submit'>Save</button>
-					<button type='submit' onClick={props.handleCancel}>
-						Cancel
-					</button>
+					<div className='Form__Buttons'>
+						<button type='submit'>Save</button>
+						<button type='submit' onClick={props.handleCancel}>
+							Cancel
+						</button>
+					</div>
 				</form>
 			</div>
 		);
 	} else {
 		return (
-			<div>
+			<div className='Form__Buttons'>
 				<button onClick={props.handleAdd}>Add</button>
 			</div>
 		);

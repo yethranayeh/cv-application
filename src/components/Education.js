@@ -35,7 +35,7 @@ const Form = (props) => {
 		);
 	} else {
 		return (
-			<div>
+			<div className='Form__Buttons'>
 				<button onClick={props.handleAdd}>Add</button>
 			</div>
 		);
