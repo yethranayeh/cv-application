@@ -10,6 +10,16 @@ label {
 	gap: var(--gap);
 }
 
+.GeneralInformation a {
+	color: var(--secondary);
+	text-decoration: none;
+}
+
+.GeneralInformation a:hover {
+	color: var(--secondary-light);
+	text-decoration: underline;
+}
+
 .GeneralInformation__Name {
 	text-transform: capitalize;
 	font-size: 1.2rem;

@@ -2,6 +2,16 @@
 :root {
 	--gap: 0.5rem;
 	--padding-sm: 0.4rem;
+	--padding-md: 0.8rem;
+	--border-radius: 10px;
+
+	--primary: #042832;
+	--secondary: #3adfd6;
+	--secondary-light: #cdfffd;
+	--dark: #272b30;
+	--light: #fffefe;
+	--light-dark: #ebebeb;
+	--bg: #ffebd9;
 }
 
 *,
@@ -10,13 +20,39 @@
 	box-sizing: border-box;
 }
 
+body {
+	background-color: var(--bg);
+}
+
 h1 {
 	font-size: 1.2rem;
 	font-weight: bold;
 }
 
 input {
-	border: 1px solid black;
+	border: 1px solid var(--dark);
+	border-radius: var(--border-radius);
+	background-color: var(--light-dark);
+	color: var(--dark);
+	font-size: 1.1rem;
+	padding: var(--padding-sm);
+	transition: background-color 250ms ease-out;
+}
+
+input:focus {
+	background-color: var(--light);
+}
+
+button {
+	border: 1px solid var(--dark);
+	border-radius: var(--border-radius);
+	background-color: var(--light);
+	color: var(--dark);
+	padding: var(--padding-sm) var(--padding-md);
+	font-size: 1rem;
+	font-weight: bold;
+	cursor: pointer;
+	transition: background-color 250ms ease-out;
 }
 
 .App {
@@ -25,8 +61,7 @@ input {
 }
 
 .Container {
-	padding: 1rem;
-	border: 2px solid black;
+	border: 2px solid var(--dark);
 	display: grid;
 	grid-template-columns: 1fr 3fr;
 }
@@ -68,16 +103,32 @@ input {
 	gap: var(--gap);
 }
 
+.App__Grid--1fr {
+	background-color: var(--primary);
+	color: var(--light);
+}
+
+.App__Grid--1fr button:hover {
+	background-color: var(--secondary-light);
+}
+
+.App__Grid--3fr {
+	background-color: var(--secondary-light);
+	color: var(--primary);
+	align-items: center;
+}
+
+.App__Grid--3fr button:hover {
+	background-color: var(--primary);
+	color: var(--light);
+}
+
 .App__Grid--1fr,
 .App__Grid--3fr {
 	display: flex;
 	flex-direction: column;
 	gap: var(--gap);
-	padding: var(--padding-sm);
-}
-
-.App__Grid--3fr {
-	align-items: center;
+	padding: var(--padding-md);
 }
 
 /* Media queries for screen breakpoints */
