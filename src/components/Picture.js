@@ -14,10 +14,30 @@ class Picture extends React.Component {
 
 	changeImage = async () => {
 		let newSrc = prompt("Enter new image URL (It will be resized to 124x124px):");
-		this.setState({
-			src: newSrc
-		});
-		this.updateStorage();
+
+		// If prompt is cancelled or empty, do nothing
+		// Else, if URL does not start with http, https or www. add http://
+		if (newSrc === null || newSrc === "") {
+			return;
+		} else if (!/^(http:|https:|www.)/i.test(newSrc)) {
+			newSrc = "http://" + newSrc;
+		}
+
+		// Fetch newSrc and check if response is an image type
+		try {
+			let response = await fetch(newSrc);
+			let responseType = response.headers.get("content-type");
+			if (!responseType.includes("image")) {
+				alert("The URL does not return an image!");
+				return;
+			} else {
+				this.setState({
+					src: newSrc
+				});
+			}
+		} catch (err) {
+			console.error("There was an issue while fetching the image:\n" + err.message);
+		}
 	};
 
 	render() {
