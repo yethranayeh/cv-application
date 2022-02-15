@@ -3,3 +3,34 @@
 label {
 	margin-right: 0.2rem;
 }
+
+.GeneralInformation {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.GeneralInformation__Name {
+	text-transform: capitalize;
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+/* Rule for laptop, desktop devices etc. only */
+@media only screen and (hover: hover) {
+	.GeneralInformation button {
+		display: none;
+	}
+
+	.GeneralInformation:hover button {
+		display: block;
+	}
+}
+
+/* Rule for mobile devices only */
+@media only screen and (hover: none) and (pointer: coarse) {
+	/* Mobile based styles */
+	.GeneralInformation button {
+		display: block;
+	}
+}

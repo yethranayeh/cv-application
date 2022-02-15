@@ -3,28 +3,94 @@
 import React from "react";
 import "../styles/General.css";
 
+function Form(props) {
+	return (
+		<div className='GeneralForm'>
+			<form className='Form' onSubmit={props.handleSubmit}>
+				<h1>General Information</h1>
+				<div className='Form__Section'>
+					<label htmlFor='name'>{"Name & Surname:"}</label>
+					<input type='text' name='name' defaultValue={props.name} required />
+				</div>
+				<div className='Form__Section'>
+					<label htmlFor='email'>Email:</label>
+					<input type='email' name='email' defaultValue={props.email} />
+				</div>
+				<div className='Form__Section'>
+					<label htmlFor='phone'>Phone:</label>
+					<input type='tel' name='phone' defaultValue={props.phone} />
+				</div>
+				<button type='submit'>Save</button>
+			</form>
+		</div>
+	);
+}
+
+const Information = (props) => {
+	return (
+		<div className='GeneralInformation'>
+			<p className='GeneralInformation__Name'>{props.name}</p>
+			{props.email && (
+				<a className='GeneralInformation__Email' href={`mailto:${props.email}`}>
+					{props.email}
+				</a>
+			)}
+			{props.phone && (
+				<a className='GeneralInformation__Phone' href={`tel:${props.phone}`}>
+					{props.phone}
+				</a>
+			)}
+			<button onClick={props.handleEdit}>Edit</button>
+		</div>
+	);
+};
+
 class General extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			name: "",
+			email: "",
+			phone: "",
+			editing: true
+		};
+	}
+
+	handleEdit = () => {
+		this.setState({
+			editing: true
+		});
+	};
+
+	saveForm = (event) => {
+		event.preventDefault();
+
+		let name = event.target.querySelector('[name="name"]').value;
+		let email = event.target.querySelector('[name="email"]').value;
+		let phone = event.target.querySelector('[name="phone"]').value;
+		this.setState({
+			name: name,
+			email: email,
+			phone: phone,
+			editing: false
+		});
+	};
+
 	render() {
-		return (
-			<div className='General'>
-				<form className='Form'>
-					<h1>General Information</h1>
-					<div className='Form__Section'>
-						<label htmlFor='name'>{"Name & Surname:"}</label>
-						<input type='text' name='name' />
-					</div>
-					<div className='Form__Section'>
-						<label htmlFor='email'>Email:</label>
-						<input type='email' name='email' />
-					</div>
-					<div className='Form__Section'>
-						<label htmlFor='phone'>Phone:</label>
-						<input type='tel' name='phone' />
-					</div>
-					<button type='submit'>Save</button>
-				</form>
-			</div>
-		);
+		if (this.state.editing) {
+			return (
+				<Form name={this.state.name} email={this.state.email} phone={this.state.phone} handleSubmit={this.saveForm} />
+			);
+		} else {
+			return (
+				<Information
+					name={this.state.name}
+					email={this.state.email}
+					phone={this.state.phone}
+					handleEdit={this.handleEdit}
+				/>
+			);
+		}
 	}
 }
 

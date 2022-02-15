@@ -5,6 +5,15 @@
 	box-sizing: border-box;
 }
 
+h1 {
+	font-size: 1.2rem;
+	font-weight: bold;
+}
+
+input {
+	border: 1px solid black;
+}
+
 .App {
 	margin: auto;
 	padding: 1rem;
