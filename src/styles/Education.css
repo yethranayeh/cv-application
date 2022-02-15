@@ -2,5 +2,5 @@
 
 .Form__Dates {
 	display: flex;
-	gap: 0.4rem;
+	gap: var(--gap);
 }

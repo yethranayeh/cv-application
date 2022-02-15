@@ -1,4 +1,8 @@
 /** @format */
+:root {
+	--gap: 0.5rem;
+}
+
 *,
 *::before,
 *::after {
@@ -29,7 +33,7 @@ input {
 .Form {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: var(--gap);
 	width: max-content;
 	margin: auto;
 }
@@ -37,4 +41,11 @@ input {
 .Form__Section {
 	display: flex;
 	flex-direction: column;
+}
+
+.App__Grid--1fr,
+.App__Grid--3fr {
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
 }

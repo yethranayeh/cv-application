@@ -23,11 +23,13 @@ class Picture extends React.Component {
 	render() {
 		return (
 			<div className='Picture'>
-				<img className='Picture__Img' src={this.state.src} alt={this.state.alt} width={124} height={124} />
-				<div className='Picture__Overlay'>
-					<button className='Picture__EditButton' onClick={this.changeImage}>
-						Edit
-					</button>
+				<div className='Picture__Container'>
+					<img className='Picture__Img' src={this.state.src} alt={this.state.alt} width={124} height={124} />
+					<div className='Picture__Overlay'>
+						<button className='Picture__EditButton' onClick={this.changeImage}>
+							Edit
+						</button>
+					</div>
 				</div>
 			</div>
 		);
