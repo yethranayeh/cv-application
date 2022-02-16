@@ -1,7 +1,7 @@
 {
 	"name": "cv-project",
 	"version": "0.1.0",
-	"homepage": "http://yethranayeh.github.io/cv-application",
+	"homepage": ".",
 	"private": true,
 	"dependencies": {
 		"@fontsource/dosis": "^4.5.4",
