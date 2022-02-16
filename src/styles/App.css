@@ -190,6 +190,10 @@ i {
 }
 
 @media screen and (max-width: 576px) {
+	.App {
+		padding: var(--padding-md);
+	}
+
 	.App__Grid--1fr {
 		align-items: center;
 	}
@@ -207,6 +211,10 @@ i {
 }
 
 @media screen and (max-width: 310px) {
+	.App {
+		padding: 0;
+	}
+
 	.App__Grid--1fr .GeneralInformation {
 		align-self: flex-start;
 	}
