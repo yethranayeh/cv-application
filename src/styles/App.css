@@ -6,6 +6,7 @@
 	--padding-sm: 0.4rem;
 	--padding-md: 0.8rem;
 	--padding-lg: 1.2rem;
+	--margin-sm: 0.4rem;
 	--border-radius: 10px;
 
 	--primary: #042832;
@@ -33,7 +34,7 @@ h2 {
 }
 
 input {
-	border: 1px solid var(--dark);
+	border: 2px solid var(--dark);
 	border-radius: var(--border-radius);
 	background-color: var(--light-dark);
 	color: var(--dark);
@@ -44,6 +45,7 @@ input {
 
 input:focus {
 	background-color: var(--light);
+	border-color: var(--secondary);
 }
 
 button {
@@ -56,6 +58,10 @@ button {
 	font-weight: bold;
 	cursor: pointer;
 	transition: background-color 250ms ease-out;
+}
+
+button i {
+	margin-right: var(--margin-sm);
 }
 
 .Button--Edit {

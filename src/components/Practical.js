@@ -31,9 +31,11 @@ const Form = (props) => {
 						</div>
 					</div>
 					<div className='Form__Buttons'>
-						<button type='submit'>Save</button>
+						<button type='submit'>
+							<i className='fas fa-save'></i>Save
+						</button>
 						<button type='submit' onClick={props.handleCancel}>
-							Cancel
+							<i className='fa fa-times'></i>Cancel
 						</button>
 					</div>
 				</form>
@@ -42,7 +44,9 @@ const Form = (props) => {
 	} else {
 		return (
 			<div className='Form__Buttons'>
-				<button onClick={props.handleAdd}>Add</button>
+				<button onClick={props.handleAdd}>
+					<i className='fas fa-plus'></i>Add
+				</button>
 			</div>
 		);
 	}
@@ -107,7 +111,7 @@ class Information extends React.Component {
 						{this.state.formValues.dateStart} - {this.state.formValues.dateEnd}
 					</p>
 					<button className='Button--Edit' onClick={this.handleEdit}>
-						Edit
+						<i className='fas fa-i-cursor'></i>Edit
 					</button>
 				</div>
 			);

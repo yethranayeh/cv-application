@@ -20,7 +20,9 @@ function Form(props) {
 					<label htmlFor='phone'>Phone:</label>
 					<input type='tel' name='phone' defaultValue={props.phone} />
 				</div>
-				<button type='submit'>Save</button>
+				<button type='submit'>
+					<i className='fas fa-save'></i>Save
+				</button>
 			</form>
 		</div>
 	);
@@ -40,7 +42,9 @@ const Information = (props) => {
 					{props.phone}
 				</a>
 			)}
-			<button onClick={props.handleEdit}>Edit</button>
+			<button onClick={props.handleEdit}>
+				<i className='fas fa-i-cursor'></i>Edit
+			</button>
 		</div>
 	);
 };
