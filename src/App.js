@@ -22,6 +22,9 @@ class App extends React.Component {
 						<Practical />
 					</div>
 				</div>
+				<button className='App__PrintButton' onClick={window.print}>
+					<i className='fas fa-print'></i>Print
+				</button>
 			</div>
 		);
 	}

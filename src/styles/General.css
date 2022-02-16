@@ -20,6 +20,10 @@ label {
 	text-decoration: underline;
 }
 
+.GeneralInformation a i {
+	color: var(--secondary-light);
+}
+
 .GeneralInformation__Name {
 	text-transform: capitalize;
 	font-size: 1.5rem;

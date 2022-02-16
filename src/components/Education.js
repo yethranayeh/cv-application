@@ -196,7 +196,9 @@ class Education extends React.Component {
 			));
 			return (
 				<div className='Education'>
-					<h2>Education</h2>
+					<h2>
+						<i className='fas fa-graduation-cap'></i>Education
+					</h2>
 					{info}
 					<Form
 						formActive={this.state.formActive}
@@ -210,7 +212,9 @@ class Education extends React.Component {
 		} else {
 			return (
 				<div className='Education'>
-					<h2>Education</h2>
+					<h2>
+						<i className='fas fa-graduation-cap'></i>Education
+					</h2>
 					<Form
 						formActive={this.state.formActive}
 						formValues={this.state.formValues}

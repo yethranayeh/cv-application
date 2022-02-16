@@ -34,11 +34,13 @@ const Information = (props) => {
 			<h1 className='GeneralInformation__Name'>{props.name}</h1>
 			{props.email && (
 				<a className='GeneralInformation__Email' href={`mailto:${props.email}`}>
+					<i className='fas fa-envelope'></i>
 					{props.email}
 				</a>
 			)}
 			{props.phone && (
 				<a className='GeneralInformation__Phone' href={`tel:${props.phone}`}>
+					<i className='fas fa-phone-alt'></i>
 					{props.phone}
 				</a>
 			)}

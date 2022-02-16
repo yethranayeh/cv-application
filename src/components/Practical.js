@@ -224,7 +224,9 @@ class Practical extends React.Component {
 		} else {
 			return (
 				<div className='Practical'>
-					<h2>Practical Experience</h2>
+					<h2>
+						<i className='fas fa-briefcase'></i>Practical Experience
+					</h2>
 					<Form
 						formActive={this.state.formActive}
 						formValues={this.state.formValues}

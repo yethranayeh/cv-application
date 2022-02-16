@@ -26,11 +26,21 @@
 
 body {
 	background-color: var(--bg);
+	font-family: "Dosis", Arial, Helvetica, sans-serif;
+	font-size: 1.2rem;
+}
+
+h1 {
+	font-size: 1.6rem;
 }
 
 h2 {
-	font-size: 1.2rem;
+	font-size: 1.4rem;
 	font-weight: bold;
+}
+
+label {
+	margin-bottom: var(--margin-sm);
 }
 
 input {
@@ -60,7 +70,7 @@ button {
 	transition: background-color 250ms ease-out;
 }
 
-button i {
+i {
 	margin-right: var(--margin-sm);
 }
 
@@ -71,6 +81,15 @@ button i {
 .App {
 	margin: auto;
 	padding: 1rem;
+}
+
+.App__PrintButton {
+	margin-top: var(--margin-sm);
+}
+
+.App__PrintButton:hover {
+	background-color: var(--secondary);
+	color: var(--light);
 }
 
 .Container {
@@ -216,5 +235,70 @@ button i {
 		align-items: flex-end;
 		justify-content: center;
 		border-radius: 50%;
+	}
+}
+
+/* Print screen */
+@media print {
+	button,
+	input,
+	label {
+		display: none;
+	}
+
+	body {
+		background-color: var(--secondary-light);
+	}
+
+	.Container {
+		border: none;
+	}
+
+	.App {
+		padding: 0;
+	}
+
+	.App__Grid--1fr {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.App__Grid--3fr {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.Form {
+		width: auto;
+	}
+
+	.Container {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		justify-content: center;
+	}
+
+	.Form__Dates {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.Form__Section {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.Education,
+	.Practical {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap);
 	}
 }
